@@ -1,0 +1,8 @@
+[package]
+name = "aoc2022"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+atoi = "2.0.0"
+nom = "7.1.3"
