@@ -2,8 +2,8 @@ use atoi::atoi;
 use nom::{
 	branch::alt,
 	bytes::complete::tag,
-	character::complete::{digit1, one_of},
-	combinator::{map, recognize, rest},
+	character::complete::digit1,
+	combinator::map,
 	multi::separated_list1,
 	sequence::{preceded, separated_pair},
 	IResult,
@@ -98,7 +98,7 @@ fn part2(input: &str) -> usize {
 	input
 		.lines()
 		.map(|line| {
-			let (id, sets) = parse_game(line);
+			let (_, sets) = parse_game(line);
 
 			let mut red_cubes = 0usize;
 			let mut green_cubes = 0usize;
