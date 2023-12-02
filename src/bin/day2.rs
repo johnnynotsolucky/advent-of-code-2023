@@ -1,13 +1,4 @@
 use atoi::atoi;
-use nom::{
-	branch::alt,
-	bytes::complete::tag,
-	character::complete::digit1,
-	combinator::map,
-	multi::separated_list1,
-	sequence::{preceded, separated_pair},
-	IResult,
-};
 use std::{cmp::max, time::Instant};
 
 fn main() {
@@ -25,33 +16,6 @@ fn main() {
 	println!("Part 2: {part2} ({part2_elapsed})");
 }
 
-type Game<'line> = (usize, Vec<Vec<(usize, &'line str)>>);
-type GameResult<'line> = IResult<&'line str, Game<'line>>;
-
-fn parse_game(line: &str) -> Game {
-	let res: GameResult = separated_pair(
-		preceded(
-			tag("Game "),
-			map(digit1, |s: &str| atoi::<usize>(s.as_bytes()).unwrap()),
-		),
-		tag(": "),
-		separated_list1(
-			tag("; "),
-			separated_list1(
-				tag(", "),
-				separated_pair(
-					map(digit1, |s: &str| atoi::<usize>(s.as_bytes()).unwrap()),
-					tag(" "),
-					alt((tag("red"), tag("green"), tag("blue"))),
-				),
-			),
-		),
-	)(line);
-
-	let (_rest, game) = res.unwrap();
-	game
-}
-
 fn part1(input: &str) -> usize {
 	let available_red_cubes = 12;
 	let available_green_cubes = 13;
@@ -59,37 +23,39 @@ fn part1(input: &str) -> usize {
 
 	input
 		.lines()
-		.filter_map(|line| {
-			let (id, sets) = parse_game(line);
-
-			for set in sets {
+		.enumerate()
+		.filter_map(|(index, line)| {
+			let (_, game) = line.split_once(": ").unwrap();
+			for set in game.split("; ") {
 				let mut red_cubes = 0usize;
 				let mut green_cubes = 0usize;
 				let mut blue_cubes = 0usize;
 
-				for (count, colour) in set {
+				for toss in set.split(", ") {
+					let (count, colour) = toss.split_once(" ").unwrap();
+					let count = atoi::<usize>(count.as_bytes()).unwrap();
 					match colour {
 						"red" => red_cubes += count,
 						"green" => green_cubes += count,
 						"blue" => blue_cubes += count,
 						_ => panic!("oops"),
 					}
-				}
 
-				if red_cubes > available_red_cubes {
-					return None;
-				}
+					if red_cubes > available_red_cubes {
+						return None;
+					}
 
-				if green_cubes > available_green_cubes {
-					return None;
-				}
+					if green_cubes > available_green_cubes {
+						return None;
+					}
 
-				if blue_cubes > available_blue_cubes {
-					return None;
+					if blue_cubes > available_blue_cubes {
+						return None;
+					}
 				}
 			}
 
-			Some(id)
+			Some(index + 1)
 		})
 		.sum::<usize>()
 }
@@ -98,14 +64,16 @@ fn part2(input: &str) -> usize {
 	input
 		.lines()
 		.map(|line| {
-			let (_, sets) = parse_game(line);
+			let (_, game) = line.split_once(": ").unwrap();
 
 			let mut red_cubes = 0usize;
 			let mut green_cubes = 0usize;
 			let mut blue_cubes = 0usize;
 
-			for set in sets {
-				for (count, colour) in set {
+			for set in game.split("; ") {
+				for toss in set.split(", ") {
+					let (count, colour) = toss.split_once(' ').unwrap();
+					let count = atoi::<usize>(count.as_bytes()).unwrap();
 					match colour {
 						"red" => red_cubes = max(red_cubes, count),
 						"green" => green_cubes = max(green_cubes, count),
