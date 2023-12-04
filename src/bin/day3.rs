@@ -2,7 +2,7 @@ use atoi::atoi;
 use std::{ops::RangeInclusive, time::Instant};
 
 fn main() {
-	let input = std::fs::read_to_string("inputs/day3.txt").expect("Input file should exist");
+	let input = include_str!("../../inputs/day3.txt");
 
 	let start = Instant::now();
 	let part1 = part1(&input);

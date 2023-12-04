@@ -21,4 +21,4 @@ cargo run --release --bin <day>
 | [Day 1](https://adventofcode.com/2023/day/1) | `0.156 ms` | `0.449 ms` |
 | [Day 2](https://adventofcode.com/2023/day/2) | `0.041 ms` | `0.047 ms` |
 | [Day 3](https://adventofcode.com/2023/day/3) | `1.417 ms` | `1.621 ms` |
-
+| [Day 4](https://adventofcode.com/2023/day/4) | `0.284 ms` | `0.271 ms` |
