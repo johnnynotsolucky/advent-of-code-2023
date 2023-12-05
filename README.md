@@ -10,8 +10,12 @@ cargo test
 
 ## Run the solution for a day (both parts)
 
+```bash
+cargo run --release -- <day> <part>
 ```
-cargo run --release --bin <day>
+
+```bash
+cargo run --release -- 5 2
 ```
 
 ## Criterion timings - Apple M1
