@@ -14,11 +14,21 @@ cargo test
 cargo run --release --bin <day>
 ```
 
-## Rough timings - Apple M1
+## Criterion timings - Apple M1
 
-|                                              | Part 1     | Part 2     |
-|----------------------------------------------|------------|------------|
-| [Day 1](https://adventofcode.com/2023/day/1) | `0.156 ms` | `0.449 ms` |
-| [Day 2](https://adventofcode.com/2023/day/2) | `0.041 ms` | `0.047 ms` |
-| [Day 3](https://adventofcode.com/2023/day/3) | `1.417 ms` | `1.621 ms` |
-| [Day 4](https://adventofcode.com/2023/day/4) | `0.284 ms` | `0.271 ms` |
+```text
+day1 part 1             time:   [18.747 ms 18.773 ms 18.800 ms]
+day1 part 2             time:   [94.834 µs 95.497 µs 96.231 µs]
+
+day2 part 1             time:   [6.8136 ms 6.9980 ms 7.2139 ms]
+day2 part 2             time:   [31.960 µs 32.168 µs 32.419 µs]
+
+day3 part 1             time:   [1.2059 ms 1.2302 ms 1.2600 ms]
+day3 part 2             time:   [1.3393 ms 1.3727 ms 1.4199 ms]
+
+day4 part 1             time:   [56.832 ms 57.692 ms 58.670 ms]
+day4 part 2             time:   [87.885 µs 88.573 µs 89.388 µs]
+
+day5 part 1             time:   [1.0273 ms 1.0313 ms 1.0357 ms]
+day5 part 2             time:   [27.101 µs 27.217 µs 27.369 µs]
+```

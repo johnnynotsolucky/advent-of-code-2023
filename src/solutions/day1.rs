@@ -1,39 +1,35 @@
+use crate::Solution;
 use atoi::atoi;
 use nom::{
 	branch::alt, bytes::complete::tag, character::complete::one_of, combinator::recognize, IResult,
 };
-use std::time::Instant;
 
-fn main() {
-	let input = include_str!("../../inputs/day1.txt");
+pub struct Day1;
 
-	let start = Instant::now();
-	let part1 = part1(&input);
-	let part1_elapsed = start.elapsed().as_micros() as f32 / 1000f32;
+impl Solution for Day1 {
+	fn part1(input: &str) -> String {
+		format!(
+			"{}",
+			input
+				.lines()
+				.map(|line| {
+					let first = line.chars().find_map(|c| atoi::<u8>(&[c as u8])).unwrap();
 
-	let start = Instant::now();
-	let part2 = part2(&input);
-	let part2_elapsed = start.elapsed().as_micros() as f32 / 1000f32;
+					let last = line
+						.chars()
+						.rev()
+						.find_map(|c| atoi::<u8>(&[c as u8]))
+						.unwrap();
 
-	println!("Part 1: {part1} ({part1_elapsed})");
-	println!("Part 2: {part2} ({part2_elapsed})");
-}
+					atoi::<usize>(format!("{first}{last}").as_bytes()).unwrap()
+				})
+				.sum::<usize>()
+		)
+	}
 
-fn part1(input: &str) -> usize {
-	input
-		.lines()
-		.map(|line| {
-			let first = line.chars().find_map(|c| atoi::<u8>(&[c as u8])).unwrap();
-
-			let last = line
-				.chars()
-				.rev()
-				.find_map(|c| atoi::<u8>(&[c as u8]))
-				.unwrap();
-
-			atoi::<usize>(format!("{first}{last}").as_bytes()).unwrap()
-		})
-		.sum()
+	fn part2(input: &str) -> String {
+		format!("{}", input.lines().map(|line| parser(line)).sum::<usize>())
+	}
 }
 
 fn map_result(res: &str) -> u8 {
@@ -82,13 +78,9 @@ fn parser(line: &str) -> usize {
 	atoi::<usize>(format!("{first}{last}").as_bytes()).unwrap()
 }
 
-fn part2(input: &str) -> usize {
-	input.lines().map(|line| parser(line)).sum()
-}
-
 #[cfg(test)]
 mod test {
-	use crate::{part1, part2};
+	use crate::{Day1, Solution};
 
 	const PART_1_INPUT: &str = r#"1abc2
 pqr3stu8vwx
@@ -97,7 +89,7 @@ treb7uchet"#;
 
 	#[test]
 	fn test_part1() {
-		assert_eq!(part1(PART_1_INPUT), 142usize);
+		assert_eq!(Day1::part1(PART_1_INPUT), 142.to_string());
 	}
 
 	const PART_2_INPUT: &str = r#"two1nine
@@ -110,6 +102,6 @@ zoneight234
 
 	#[test]
 	fn test_part2() {
-		assert_eq!(part2(PART_2_INPUT), 281usize);
+		assert_eq!(Day1::part2(PART_2_INPUT), 281.to_string());
 	}
 }
