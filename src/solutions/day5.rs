@@ -16,7 +16,7 @@ impl Solution for Day5 {
 			.skip(1)
 			.map(|seed| {
 				let seed = atoi::<usize>(seed.as_bytes()).unwrap();
-				seed..seed+1
+				seed..seed + 1
 			})
 			.collect::<Vec<_>>();
 

@@ -1,6 +1,6 @@
 use crate::Solution;
 use atoi::atoi;
-use std::{ops::RangeInclusive};
+use std::ops::RangeInclusive;
 
 pub struct Day3;
 

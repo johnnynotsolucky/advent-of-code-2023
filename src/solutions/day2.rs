@@ -1,6 +1,6 @@
 use crate::Solution;
 use atoi::atoi;
-use std::{cmp::max};
+use std::cmp::max;
 
 pub struct Day2;
 
