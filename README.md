@@ -35,4 +35,10 @@ day4 part 2             time:   [87.885 µs 88.573 µs 89.388 µs]
 
 day5 part 1             time:   [1.0273 ms 1.0313 ms 1.0357 ms]
 day5 part 2             time:   [27.101 µs 27.217 µs 27.369 µs]
+
+day6 part 1             time:   [1.0421 µs 1.0446 µs 1.0470 µs]
+day6 part 2             time:   [291.52 ns 293.02 ns 294.96 ns]
+
+day7 part 1             time:   [6.6449 ms 6.6536 ms 6.6641 ms]
+day7 part 2             time:   [77.345 µs 77.561 µs 77.783 µs]
 ```
