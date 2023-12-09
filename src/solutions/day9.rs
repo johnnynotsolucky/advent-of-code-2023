@@ -1,62 +1,78 @@
 use crate::Solution;
 use atoi::atoi;
 
+#[cfg(test)]
+const SIZE: usize = 6;
+
+#[cfg(not(test))]
+const SIZE: usize = 21;
+
 pub struct Day9;
 
 impl Solution for Day9 {
 	fn part1(input: &str) -> String {
-		input
-			.lines()
-			.map(into_sequence(false))
-			.map(next_value)
-			.sum::<i32>()
-			.to_string()
+		let mut sequence = [0; SIZE];
+
+		let mut sum = 0;
+		for line in input.lines() {
+			sum += next_value(line, &mut sequence, false);
+		}
+
+		sum.to_string()
 	}
 
 	fn part2(input: &str) -> String {
-		input
-			.lines()
-			.map(into_sequence(true))
-			.map(next_value)
-			.sum::<i32>()
-			.to_string()
-	}
-}
+		let mut sequence = [0; SIZE];
 
-fn into_sequence(reverse: bool) -> impl Fn(&str) -> Vec<i32> {
-	move |line: &str| {
-		let iterator = line
-			.split_ascii_whitespace()
-			.map(|item| atoi(item.as_bytes()).unwrap());
-
-		if reverse {
-			iterator.rev().collect()
-		} else {
-			iterator.collect()
+		let mut sum = 0;
+		for line in input.lines() {
+			sum += next_value(line, &mut sequence, true);
 		}
+
+		sum.to_string()
 	}
 }
 
-fn next_value(mut sequence: Vec<i32>) -> i32 {
+fn next_value(line: &str, sequence: &mut [i32; SIZE], reversed: bool) -> i32 {
+	let items = line
+		.as_bytes()
+		.split(|x| *x == b' ')
+		.map(|item| atoi(item).unwrap())
+		.enumerate();
+
+	for (index, item) in items {
+		sequence[index] = item;
+	}
+
 	let mut next = 0i32;
+	let mut len = SIZE;
 	loop {
 		let mut all_zero = true;
-		for index in 1..sequence.len() {
-			let left = sequence[index - 1];
-			let right = sequence[index];
+
+		for index in 0..len - 1 {
+			let (current, previous) = if reversed {
+				(SIZE - index - 2, SIZE - index - 1)
+			} else {
+				(index + 1, index)
+			};
+
+			let left = sequence[previous];
+			let right = sequence[current];
 			let diff = right - left;
 
-			sequence[index - 1] = diff;
+			sequence[previous] = diff;
+
 			if diff != 0 {
 				all_zero = false;
 			}
 
-			if index == sequence.len() - 1 {
+			if index == len - 2 {
 				next += right;
 			}
 		}
 
-		sequence.pop();
+		len -= 1;
+
 		if all_zero {
 			break;
 		}

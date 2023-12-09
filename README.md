@@ -45,6 +45,6 @@ day7 part 2             time:   [290.70 µs 292.18 µs 293.81 µs]
 day8 part 1             time:   [533.82 µs 534.16 µs 534.51 µs]
 day8 part 2             time:   [2.2821 ms 2.2878 ms 2.2934 ms]
 
-day9 part 1             time:   [81.769 µs 81.851 µs 81.939 µs]
-day9 part 2             time:   [81.893 µs 82.128 µs 82.370 µs]
+day9 part 1             time:   [50.698 µs 50.742 µs 50.792 µs]
+day9 part 2             time:   [51.042 µs 51.120 µs 51.208 µs]
 ```
