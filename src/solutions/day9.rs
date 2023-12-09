@@ -73,7 +73,7 @@ mod test {
 10 13 16 21 30 45"#;
 
 	#[test]
-	fn test_part1_a() {
+	fn test_part1() {
 		assert_eq!(Day9::part1(INPUT), 114.to_string());
 	}
 
