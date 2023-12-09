@@ -28,7 +28,7 @@ impl Solution for Day1 {
 	}
 
 	fn part2(input: &str) -> String {
-		format!("{}", input.lines().map(|line| parser(line)).sum::<usize>())
+		format!("{}", input.lines().map(parser).sum::<usize>())
 	}
 }
 

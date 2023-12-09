@@ -23,7 +23,7 @@ impl Solution for Day2 {
 						let mut blue_cubes = 0usize;
 
 						for toss in set.split(", ") {
-							let (count, colour) = toss.split_once(" ").unwrap();
+							let (count, colour) = toss.split_once(' ').unwrap();
 							let count = atoi::<usize>(count.as_bytes()).unwrap();
 							match colour {
 								"red" => red_cubes += count,

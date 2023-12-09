@@ -5,13 +5,13 @@ const INPUT: &str = include_str!("../inputs/day7.txt");
 
 fn part1(c: &mut Criterion) {
 	c.bench_function("day7 part 1", |b| {
-		b.iter(|| aoc2023::Day3::part1(black_box(INPUT)))
+		b.iter(|| aoc2023::Day7::part1(black_box(INPUT)))
 	});
 }
 
 fn part2(c: &mut Criterion) {
 	c.bench_function("day7 part 2", |b| {
-		b.iter(|| aoc2023::Day3::part2(black_box(INPUT)))
+		b.iter(|| aoc2023::Day7::part2(black_box(INPUT)))
 	});
 }
 
