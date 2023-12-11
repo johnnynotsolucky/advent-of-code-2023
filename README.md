@@ -47,4 +47,10 @@ day8 part 2             time:   [2.2821 ms 2.2878 ms 2.2934 ms]
 
 day9 part 1             time:   [50.698 µs 50.742 µs 50.792 µs]
 day9 part 2             time:   [51.042 µs 51.120 µs 51.208 µs]
+
+day10 part 1            time:   [1.8068 ms 1.8094 ms 1.8120 ms]
+day10 part 2            DNC
+
+day11 part 1            time:   [161.17 ms 161.75 ms 162.41 ms]
+day11 part 2            time:   [176.43 ms 177.05 ms 177.73 ms]
 ```
