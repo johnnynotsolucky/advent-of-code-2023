@@ -21,7 +21,7 @@ fn main() {
 		12 => todo!(),
 		13 => todo!(),
 		14 => todo!(),
-		15 => todo!(),
+		15 => Day15::run(part, include_str!("../inputs/day15.txt")),
 		16 => todo!(),
 		17 => todo!(),
 		18 => todo!(),

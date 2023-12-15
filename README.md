@@ -49,8 +49,20 @@ day9 part 1             time:   [50.698 µs 50.742 µs 50.792 µs]
 day9 part 2             time:   [51.042 µs 51.120 µs 51.208 µs]
 
 day10 part 1            time:   [1.8068 ms 1.8094 ms 1.8120 ms]
-day10 part 2            DNC
+day10 part 2            TODO
 
 day11 part 1            time:   [161.17 ms 161.75 ms 162.41 ms]
 day11 part 2            time:   [176.43 ms 177.05 ms 177.73 ms]
+
+day12 part 1            TODO
+day12 part 2            TODO
+
+day13 part 1            TODO
+day13 part 2            TODO
+
+day14 part 1            TODO
+day14 part 2            TODO
+
+day15 part 1            time:   [27.789 µs 27.925 µs 28.072 µs]
+day15 part 2            time:   [73.625 µs 73.960 µs 74.350 µs]
 ```

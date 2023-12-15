@@ -49,7 +49,7 @@ impl Solution for Day10 {
 		steps.to_string()
 	}
 
-	fn part2(input: &str) -> String {
+	fn part2(_input: &str) -> String {
 		todo!()
 	}
 }
@@ -214,7 +214,7 @@ fn targets(current: (&(i32, i32), &Piece)) -> [Option<(i32, i32)>; 4] {
 fn connected(current: (&(i32, i32), &Piece), candidate: (&(i32, i32), &Piece)) -> bool {
 	let orientation = Orientation::new(current.0, candidate.0);
 
-	let res = match orientation {
+	match orientation {
 		Orientation::Horizontal => {
 			if current.0 .0 > candidate.0 .0 {
 				// Going West
@@ -257,9 +257,7 @@ fn connected(current: (&(i32, i32), &Piece), candidate: (&(i32, i32), &Piece)) -
 				)
 			}
 		}
-	};
-
-	res
+	}
 }
 
 #[derive(Debug)]

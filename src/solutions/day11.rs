@@ -3,12 +3,6 @@
 use crate::Solution;
 use itertools::Itertools;
 
-#[cfg(test)]
-const SIZE: usize = 10;
-
-#[cfg(not(test))]
-const SIZE: usize = 140;
-
 pub struct Day11;
 
 impl Solution for Day11 {
@@ -45,7 +39,7 @@ fn solve(input: &str, expansion: usize) -> String {
 
 	let mut sum = 0;
 	for pair in galaxies.into_iter().combinations(2) {
-		let a = pair.get(0).unwrap();
+		let a = pair.first().unwrap();
 		let b = pair.get(1).unwrap();
 
 		let start_x = a.0.min(b.0);
